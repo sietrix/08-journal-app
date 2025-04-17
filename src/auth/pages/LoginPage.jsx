@@ -25,6 +25,7 @@ export const LoginPage = () => {
                             type="password" 
                             placeholder="Contraseña"
                             fullWidth
+                            autoComplete="on"
                         />
                     </Grid>
 
