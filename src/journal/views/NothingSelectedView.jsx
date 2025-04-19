@@ -11,6 +11,7 @@ export const NothingSelectedView = () => {
             direction = "column"
             alignItems = "center"
             justifyContent =  "center"
+            width= '100%'
             sx={{ minHeight: 'calc(100vh - 110px)', backgroundColor: 'primary.main', borderRadius: 2 }}
         >
             <Grid size={{ xs: 3 }}>
@@ -18,9 +19,9 @@ export const NothingSelectedView = () => {
                 <StarOutline sx={{ fontSize: 100, color: 'white' }} />
             </Grid>
 
-            <Grid size={{ xs: 3 }} >
+            <Grid size={{ xs: 3 }}>
                 <Typography color="white" variant="h5">
-                    Selecciona o crea una entrada aaaaaaaaa aaaaaaaa aaaaaaaa
+                    Selecciona o crea una entrada grdhtyhdtrhdrtyhtyrh thtdrhdeht
                 </Typography>
             </Grid>
 
