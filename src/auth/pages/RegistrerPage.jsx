@@ -1,14 +1,29 @@
 import { Link as RouterLink } from "react-router";
-import { Google } from "@mui/icons-material"
 import {Button, Grid, Link, TextField, Typography } from "@mui/material"
 import { AuthLayout } from "../layout/AuthLayout";
+import { useForm } from "../../hooks";
 
+const formData = {
+    email: 'fernando@google.com',
+    password: '123456',
+    displayName: 'Fernando Herrera'
+}
 
 
 export const RegistrerPage = () => {
+
+    const { displayName, email, password, onInputChange, formState } = useForm( formData );
+
+    const onSubmit = ( event ) => {
+        event.preventDefault();
+        console.log( formState );
+    }
+    
+
+
     return (
         <AuthLayout title="Crear cuenta">
-            <form>
+            <form onSubmit={ onSubmit }>
                 <Grid container>
                     <Grid  size={{ xs: 12 }} sx={{ mt: 2 }}>
                         <TextField 
@@ -16,6 +31,9 @@ export const RegistrerPage = () => {
                             type="text" 
                             placeholder="Nombre completo"
                             fullWidth
+                            name="displayName"
+                            value={ displayName }
+                            onChange={ onInputChange }
                         />
                     </Grid>
 
@@ -25,6 +43,9 @@ export const RegistrerPage = () => {
                             type="email" 
                             placeholder="correo@google.com"
                             fullWidth
+                            name="email"
+                            value={ email }
+                            onChange={ onInputChange }
                         />
                     </Grid>
 
@@ -35,12 +56,19 @@ export const RegistrerPage = () => {
                             placeholder="Contraseña"
                             fullWidth
                             autoComplete="on"
+                            name="password"
+                            value={ password }
+                            onChange={ onInputChange }
                         />
                     </Grid>
 
                     <Grid container spacing={ 2 } sx={{ mb: 2, mt: 1 }} size={{ xs: 12}}>
                         <Grid size={{ xs: 12 }}>
-                            <Button variant="contained" fullWidth>
+                            <Button 
+                                type="submit" 
+                                variant="contained" 
+                                fullWidth
+                            >
                                 Crear cuenta
                             </Button>
                         </Grid>
