@@ -23,10 +23,7 @@ export const signInWithGoogle = async() => {
         const errorCode = error.code;
         const errorMessage = error.message;
         
-        return {
-            ok: false,
-            errorMessage
-        }
+        return { ok: false, errorMessage }
     }
 }
 
@@ -49,12 +46,7 @@ export const registerUserWithEmailPassword = async({  email, password, displayNa
             displayName, email, photoURL, uid
         }
     } catch (error) {
-
-        console.log(error);
-
-        return { 
-            ok: false, 
-            errorMessage: error.message
-        }
+        // console.log(error);
+        return { ok: false, errorMessage: error.message }
     }
 }
