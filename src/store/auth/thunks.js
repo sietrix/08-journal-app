@@ -1,7 +1,5 @@
 import { loginWithEmailPassword, logoutFirebase, registerUserWithEmailPassword, signInWithGoogle } from "../../firebase/provider";
-import { loadNotes } from "../../helpers";
-import { setNotes } from "../journal";
-import { checkingCredentials, login, logout } from "./"
+import { checkingCredentials, login, logout } from "./";
 
 export const checkingAuthentication = ( email, password ) => {
     return async( dispatch ) => {
@@ -57,20 +55,5 @@ export const startLogout = () => {
     return async( dispatch ) => {
         await logoutFirebase();
         dispatch( logout() );
-    }
-}
-
-
-export const startLoadingNotes = () => {
-    return async( dispatch, getState ) => {
-
-        const { uid } = getState().auth;
-        if( !uid ) throw new Error('El UID del usurio no existe');
-
-        console.log({uid});
-        const notes = await loadNotes( uid );
-        dispatch( setNotes( notes )) ;
-
-
     }
 }
