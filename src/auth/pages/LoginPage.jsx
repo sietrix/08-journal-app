@@ -8,8 +8,8 @@ import { useForm } from "../../hooks/useForm";
 import { startGoogleSignIn, startLoginWithEmailPassword } from "../../store/auth";
 
 const formData = {
-    email: 'fernando@google.com',
-    password: '123456'
+    email: '', // melissa@google.com
+    password: ''  // 123456
 };
 
 export const LoginPage = () => {
@@ -30,7 +30,6 @@ export const LoginPage = () => {
     }
 
     const onGoogleSignIn = () => {
-        console.log('onGoogleSignIn')
         dispatch( startGoogleSignIn() );
     }
 
