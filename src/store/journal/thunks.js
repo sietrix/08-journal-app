@@ -58,6 +58,7 @@ export const startSaveNote = () => {
         const docRef = doc( FirebaseDB, `${ uid }id-user-1/journal/notes/${ note.id }` );
         await setDoc( docRef, noteToFireStore, { merge: true } );
     
+        dispatch( updateNote( note ) );
     
     }
 }
