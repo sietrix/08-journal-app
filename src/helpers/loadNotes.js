@@ -12,10 +12,9 @@ export const loadNotes = async( uid = '' ) => {
     const querySnapshot = await getDocs( collectionRef );
     
     // console.log(querySnapshot.size);
-    console.log(querySnapshot);
+    // console.log(querySnapshot);
 
     const notes = [];
-
 
     querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots

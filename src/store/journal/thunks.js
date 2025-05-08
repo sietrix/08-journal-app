@@ -38,7 +38,7 @@ export const startLoadingNotes = () => {
         const { uid } = getState().auth;
         if( !uid ) throw new Error('El UID del usurio no existe');
 
-        console.log({uid});
+        // console.log({uid});
         const notes = await loadNotes( uid );
         dispatch( setNotes( notes ));
     }
