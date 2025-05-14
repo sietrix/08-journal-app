@@ -57,3 +57,6 @@ global.TextEncoder = TextEncoder;
 // Si te lo pide se instala
 const { TextDecoder } = require('util');
 global.TextDecoder = TextDecoder;
+
+#cloudinary
+npm install --save-dev cloudinary
