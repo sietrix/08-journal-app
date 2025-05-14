@@ -26,13 +26,10 @@ describe('Pruebas en fileUpload', () => {
         // console.log(url);
         const segments = url.split('/');
         const imageId = segments[ segments.length - 1].replace('.jpg', '');
-        const routeImage = `journal-app/${ imageId }`;
 
         await cloudinary.api
-            .delete_resources([routeImage])
+            .delete_resources([imageId])
             .then( result => console.log(result) );
-
-
 
     });
 
