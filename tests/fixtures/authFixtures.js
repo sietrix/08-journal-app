@@ -32,7 +32,7 @@ export const notAuthenticatedState = {
 
 
 export const demoUser = {
-    uid: 'ABC13',
+    uid: 'ABC123',
     email: 'demo@google.com',
     displayName: 'Demo User',
     photoURL: 'https://foto.jpg',
