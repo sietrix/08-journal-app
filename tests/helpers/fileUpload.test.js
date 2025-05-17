@@ -29,7 +29,7 @@ describe('Pruebas en fileUpload', () => {
 
         await cloudinary.api
             .delete_resources([imageId])
-            .then( result => console.log(result) );
+            //.then( result => console.log(result) );
 
     });
 
