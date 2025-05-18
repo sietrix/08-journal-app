@@ -42,7 +42,8 @@ __jest.config.cjs__
 ```
 module.exports = {
     testEnvironment: 'jest-environment-jsdom',
-    setupFiles: ['./jest.setup.cjs']
+    setupFiles: ['./jest.setup.cjs'],
+    transformIgnorePatterns: [],
 }
 ```
 
