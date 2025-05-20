@@ -1,6 +1,7 @@
-import { signInWithGoogle } from "../../../src/firebase/provider";
-import { checkingCredentials, login, logout } from "../../../src/store/auth";
-import { checkingAuthentication, startGoogleSignIn } from "../../../src/store/auth/thunks";
+import { loginWithEmailPassword, logoutFirebase, signInWithGoogle } from "../../../src/firebase/provider";
+import { checkingCredentials, login, logout, startLogout } from "../../../src/store/auth";
+import { checkingAuthentication, startGoogleSignIn, startLoginWithEmailPassword } from "../../../src/store/auth/thunks";
+import { clearNotesLogout } from "../../../src/store/journal";
 import { demoUser } from "../../fixtures/authFixtures";
 
 
@@ -23,7 +24,7 @@ describe('Pruebas en AuthThunks', () => {
 
     test('startGoogleSignIn debe de llamar checkingCredentials y login - Exito', async() => { 
         
-        const loginData = { ok: true, ...demoUser }
+        const loginData = { ok: true, ...demoUser };
         await signInWithGoogle.mockResolvedValue( loginData );
 
         // thunk a probar
@@ -31,9 +32,6 @@ describe('Pruebas en AuthThunks', () => {
 
         expect( dispatch ).toHaveBeenCalledWith( checkingCredentials() );
         expect( dispatch ).toHaveBeenCalledWith( login( loginData ) );
-
-
-
     });
 
     test('startGoogleSignIn debe de llamar checkingCredentials y logout - Error', async() => { 
@@ -46,9 +44,30 @@ describe('Pruebas en AuthThunks', () => {
 
         expect( dispatch ).toHaveBeenCalledWith( checkingCredentials() );
         expect( dispatch ).toHaveBeenCalledWith( logout( loginData.errorMessage ) );
+    });
+
+    test('startLoginWithEmailPassword debe de llamr checkingCredentials y login - Exito', async() => { 
+        
+        const loginData = { ok: true, ...demoUser };
+        const formData = { email: demoUser.email, password: '123456'};
+
+        await loginWithEmailPassword.mockResolvedValue( loginData );
+        
+        await startLoginWithEmailPassword( formData )( dispatch );
+
+        expect( dispatch ).toHaveBeenCalledWith( checkingCredentials() );
+        expect( dispatch ).toHaveBeenCalledWith( login( loginData ) );
+
+    });
 
 
+    test('startLogout debe de llamar logoutFirebase, clearNotesLogout y logout', async() => { 
+       
+        await startLogout()(dispatch);
 
+        expect( logoutFirebase ).toHaveBeenCalled();
+        expect( dispatch ).toHaveBeenCalledWith( clearNotesLogout() );
+        expect( dispatch ).toHaveBeenCalledWith( logout() );
     });
 
 });
