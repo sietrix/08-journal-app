@@ -8,7 +8,7 @@ export const loadNotes = async( uid = '' ) => {
     if( !uid ) throw new Error('El UID del usurio no existe');
 
     // const collectionRef = collection( FirebaseDB, `${ uid }/journal/notes` );
-    const collectionRef = collection( FirebaseDB, `${ uid }id-user-1/journal/notes` );
+    const collectionRef = collection( FirebaseDB, `${ uid }/journal/notes` );
     const querySnapshot = await getDocs( collectionRef );
     
     // console.log(querySnapshot.size);

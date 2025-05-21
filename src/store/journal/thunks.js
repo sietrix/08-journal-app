@@ -12,7 +12,6 @@ export const startNewNote = () => {
 
         const { uid } = getState().auth;
 
-
         const newNote = {
             title: '',
             body: '',
@@ -21,7 +20,7 @@ export const startNewNote = () => {
         }
 
         // const newDoc = doc( collection( FirebaseDB, `${ uid }/journal/notes`) );
-        const newDoc = doc( collection( FirebaseDB, `${ uid }id-user-1/journal/notes`) );
+        const newDoc = doc( collection( FirebaseDB, `${ uid }/journal/notes`) );
         await setDoc( newDoc, newNote );
 
         newNote.id = newDoc.id;
@@ -56,7 +55,7 @@ export const startSaveNote = () => {
         const noteToFireStore = { ...note };
         delete noteToFireStore.id;
 
-        const docRef = doc( FirebaseDB, `${ uid }id-user-1/journal/notes/${ note.id }` );
+        const docRef = doc( FirebaseDB, `${ uid }/journal/notes/${ note.id }` );
         await setDoc( docRef, noteToFireStore, { merge: true } );
     
         dispatch( updateNote( note ) );
@@ -87,7 +86,7 @@ export const startDeletingNote = () => {
         const { uid } = getState().auth;
         const { active: note} = getState().journal;
 
-        const docRef = doc( FirebaseDB, `${ uid }id-user-1/journal/notes/${ note.id }`);
+        const docRef = doc( FirebaseDB, `${ uid }/journal/notes/${ note.id }`);
         await deleteDoc( docRef );
 
         dispatch( deleteNoteById( note.id ) );
