@@ -31,6 +31,7 @@
     "@types/jest": "^29.5.14",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
+    "@types/whatwg-fetch": "^0.0.33",
     "@vitejs/plugin-react": "^4.3.4",
     "babel-jest": "^29.7.0",
     "cloudinary": "^2.6.1",

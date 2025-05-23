@@ -2,7 +2,6 @@
 // Ponerlo en la cabezera del archivo de test si no funciona en el archivo jest.setup.cjs
 require( 'whatwg-fetch' );
 const { TextEncoder } = require('util');
-const { getEnvironments } = require ('./src/helpers/getEnvironments');
 global.TextEncoder = TextEncoder;
 
 // Si te lo pide se instala
