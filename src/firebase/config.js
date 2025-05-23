@@ -28,7 +28,7 @@ const firebaseConfig = {
   measurementId: VITE_MEASUREMENTID
 };
 
-console.log( firebaseConfig);
+// console.log( firebaseConfig);
 
 // ----------- Dev/Prod -----------
 // const firebaseConfig = {
