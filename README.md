@@ -61,3 +61,6 @@ global.TextDecoder = TextDecoder;
 
 #cloudinary
 npm install --save-dev cloudinary
+
+#dotenv
+npm install --save-dev dotenv
