@@ -75,6 +75,7 @@ describe('Pruebas en <LoginPage />', () => {
         fireEvent.change( passwordField, { target: { name: 'password', value: password }});
         
         // const passwordField2 = screen.getByLabelText('password');
+        // no me funciona con aria-label
         // fireEvent.change( passwordField2, { target: { name: 'password', value: password }});
         
         const loginForm = screen.getByLabelText('submit-form');
