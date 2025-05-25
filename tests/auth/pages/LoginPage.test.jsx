@@ -9,10 +9,20 @@ import { notAuthenticatedState } from "../../fixtures/authFixtures";
 
 
 const mockStartGoogleSignIn = jest.fn();
+const mockStartLoginWithEmailPassword = jest.fn();
 
 jest.mock("../../../src/store/auth/thunks", () => ({
-    startGoogleSignIn: () => mockStartGoogleSignIn
+    startGoogleSignIn: () => mockStartGoogleSignIn,
+    startLoginWithEmailPassword: ({ email, password }) => {
+        return () => mockStartLoginWithEmailPassword({ email, password });
+    },
 }));
+
+jest.mock('react-redux', () => ({
+    ...jest.requireActual('react-redux'),
+    useDispatch: () => (fn) => fn()
+}));
+
 
 const store = configureStore({
     reducer: {
@@ -24,6 +34,8 @@ const store = configureStore({
 })
 
 describe('Pruebas en <LoginPage />', () => { 
+
+    beforeEach(() => jest.clearAllMocks() );
     
     test('debe de mostrar el componente correctamente', () => { 
         
@@ -80,6 +92,11 @@ describe('Pruebas en <LoginPage />', () => {
         
         const loginForm = screen.getByLabelText('submit-form');
         fireEvent.submit( loginForm );
+
+        expect( mockStartLoginWithEmailPassword ).toHaveBeenCalledWith({
+            email: email,
+            password: password
+        })
 
     });
 
